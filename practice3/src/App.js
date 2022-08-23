@@ -74,8 +74,12 @@ function App() {
               <tr>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td></td>
+                <td>
+                  <span className="label label-success">Label</span>
+                </td>
+                <td>
+                  <img src="#" className="img-responsive" alt="Image"/>
+                </td>
               </tr>
             </tbody>
           </table>
