@@ -21,7 +21,8 @@ function App() {
       status: true
     }
   ];
-  var elements = products.map((products, index)=>{
+  // Sử dụng câu điều kiện, vòng lặp để hiển thị
+  var elements = products.map((products)=>{
     if (products.status) {
       return <Product
       key = {products.id}
@@ -39,7 +40,7 @@ function App() {
           {elements}
         </div>
       </div>
-      
+      {/* Gọi thông qua function và không '()' */}
       <button type="button" className="btn btn-warning" onClick={onClick}>Click</button>
       
     </div>
