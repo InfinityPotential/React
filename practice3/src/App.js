@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import './App.css';
 import Header from "./components/Header";
 import Product from "./components/Product";
@@ -5,6 +6,15 @@ function App() {
   function onClick(){
     console.log('This is an app component');
   }
+  // Sử dụng ref theo Functional Component
+  const box = useRef();
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(box);
+    console.log(box.current);
+    console.log(box.current.value);
+  };
+  
   var products = [
     {
       id: 1,
@@ -35,9 +45,41 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div className="row">
+      <div className="container">
+        <div className="row">
+          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form action="" method="POST" role="form" onSubmit={onSubmit}>
+              <div className="form-group">
+                <label htmlFor="box">Tên sản phẩm</label>
+                <input type="text" className="form-control" ref={box} id="box"/>
+              </div>
+              <button type="submit" className="btn btn-primary">Lưu</button>
+            </form>
+          </div>
+        </div>
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           {elements}
+        </div>
+        <div className="row">
+          <table className="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá</th>
+                <th>Ảnh</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          
         </div>
       </div>
       {/* Gọi thông qua function và không '()' */}
