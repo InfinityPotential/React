@@ -1,7 +1,6 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import './App.css';
 import Header from "./components/Header";
-import Product from "./components/Product";
 function App() {
   function onClick(){
     console.log('This is an app component');
@@ -14,8 +13,8 @@ function App() {
     console.log(box.current);
     console.log(box.current.value);
   };
-  
-  var products = [
+  // Sử dụng state theo Functional Component
+  const [products] = useState([
     {
       id: 1,
       name : 'Laptop Asus ROG Zephyrus G14 Alan Walker GA401QEC R9 5900HS/16GB 1TB/4GB RTX3050Ti/120Hz/Túi/Win10 (K2064T)',
@@ -30,16 +29,20 @@ function App() {
       image: 'https://cdn.tgdd.vn/Products/Images/44/271545/Slider/vi-vn-dell-gaming-alienware-m15-r6-i7-p109f001dbl-1.jpg',
       status: true
     }
-  ];
+  ])
   // Sử dụng câu điều kiện, vòng lặp để hiển thị
-  var elements = products.map((products)=>{
+  var elements = products.map((products, index)=>{
     if (products.status) {
-      return <Product
-      key = {products.id}
-      name = {products.name}
-      price = {products.price}
-      image = {products.image}
-      />
+      return <tr key={products.id}>
+      <td>{index + 1 }</td>
+      <td>{products.name}</td>
+      <td>
+        <span className="label label-success">{products.price} VND</span>
+      </td>
+      <td>
+        <img src={products.image} className="img-responsive" alt={products.name}/>
+      </td>
+    </tr>
     }
   });
   return (
@@ -57,9 +60,6 @@ function App() {
             </form>
           </div>
         </div>
-        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          {elements}
-        </div>
         <div className="row">
           <table className="table table-bordered table-hover">
             <thead>
@@ -71,16 +71,7 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td>
-                  <span className="label label-success">Label</span>
-                </td>
-                <td>
-                  <img src="#" className="img-responsive" alt="Image"/>
-                </td>
-              </tr>
+              {elements}
             </tbody>
           </table>
           
