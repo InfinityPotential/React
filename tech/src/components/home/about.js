@@ -22,7 +22,7 @@ function AppAbout(){
         },
     ]
     return(
-        <div className="block aboutBlock">
+        <div id='about' className="block aboutBlock">
             
             <div className="container-fluid">
                 <div className="titleHolder">
@@ -35,7 +35,7 @@ function AppAbout(){
                 <Row gutter={[16, 16]}>
                     {items.map( item => {
                         return(
-                            <Col span={8} key = {item.key}>
+                            <Col md={{ span: 8}} key = {item.key}>
                                 <div className='content'>
                                     <div className='icon'>
                                         {item.icon}
